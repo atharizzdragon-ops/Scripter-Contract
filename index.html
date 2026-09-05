@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Developer Recruitment</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #090a0d;
+            color: #f2f3f5;
+            font-family: Inter, Arial, sans-serif;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        /* ---------- NAV ---------- */
+
+        nav {
+            height: 64px;
+            border-bottom: 1px solid #1d2026;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            background: rgba(9, 10, 13, .9);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .brand-icon {
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            color: #000;
+            display: grid;
+            place-items: center;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .online {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #8f96a3;
+            font-size: 13px;
+        }
+
+        .online-dot {
+            width: 7px;
+            height: 7px;
+            background: #40d47e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #40d47e;
+        }
+
+        /* ---------- PAGE ---------- */
+
+        main {
+            width: min(1050px, 92%);
+            margin: 65px auto 100px;
+        }
+
+        .hero {
+            max-width: 760px;
+        }
+
+        .tag {
+            display: inline-block;
+            color: #aeb5c1;
+            background: #15181e;
+            border: 1px solid #272b33;
+            padding: 7px 11px;
+            border-radius: 7px;
+            font-size: 12px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(35px, 6vw, 62px);
+            line-height: 1.02;
+            letter-spacing: -2.5px;
+            margin: 0 0 20px;
+        }
+
+        .hero p {
+            color: #959ca8;
+            font-size: 16px;
+            line-height: 1.7;
+            max-width: 650px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .primary,
+        .secondary {
+            border: 0;
+            padding: 12px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .primary {
+            background: #f2f3f5;
+            color: #08090b;
+        }
+
+        .primary:hover {
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        .secondary {
+            background: #15181e;
+            border: 1px solid #292d35;
+            color: #e7e9ed;
+        }
+
+        .secondary:hover {
+            background: #1d2128;
+        }
+
+        /* ---------- STATS ---------- */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            border: 1px solid #20242b;
+            background: #0e1014;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .stat-label {
+            color: #747b87;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        /* ---------- TABS ---------- */
+
+        .tabs {
+            display: flex;
+            gap: 5px;
+            margin-top: 55px;
+            border-bottom: 1px solid #20242b;
+        }
+
+        .tab {
+            background: none;
+            color: #777f8c;
+            border: 0;
+            padding: 13px 15px;
+            cursor: pointer;
+            font-size: 14px;
+            position: relative;
+        }
+
+        .tab.active {
+            color: white;
+        }
+
+        .tab.active::after {
+            content: "";
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: -1px;
+            height: 2px;
+            background: white;
+        }
+
+        .panel {
+            display: none;
+            padding-top: 25px;
+            animation: fade .25s ease;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ---------- CONTENT ---------- */
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            gap: 12px;
+        }
+
+        .box {
+            background: #0e1014;
+            border: 1px solid #20242b;
+            border-radius: 11px;
+            padding: 22px;
+        }
+
+        .box h3 {
+            margin: 0 0 10px;
+            font-size: 15px;
+        }
+
+        .box p {
+            color: #9299a5;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ---------- ROLE ---------- */
+
+        .role-list {
+            margin-top: 18px;
+        }
+
+        .role {
+            display: flex;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid #1c2026;
+            color: #c7cbd2;
+            font-size: 14px;
+        }
+
+        .role:last-child {
+            border: 0;
+        }
+
+        .check {
+            color: #7d8490;
+        }
+
+        /* ---------- PAYMENT ---------- */
+
+        .payment-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .payment-option {
+            flex: 1;
+            background: #12151a;
+            border: 1px solid #292e37;
+            border-radius: 9px;
+            padding: 17px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .payment-option:hover {
+            border-color: #555c68;
+        }
+
+        .payment-option.selected {
+            border-color: #fff;
+            background: #181b21;
+        }
+
+        .payment-option strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .payment-option span {
+            color: #777f8c;
+            font-size: 12px;
+        }
+
+        /* ---------- CONTRACT ---------- */
+
+        .timeline {
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: #292e36;
+        }
+
+        .month {
+            position: relative;
+            padding: 0 0 22px 32px;
+        }
+
+        .month-dot {
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #5c6470;
+            border: 3px solid #0e1014;
+        }
+
+        .month strong {
+            font-size: 14px;
+        }
+
+        .month p {
+            margin-top: 5px;
+            color: #747c88;
+            font-size: 12px;
+        }
+
+        /* ---------- ACCORDION ---------- */
+
+        .accordion {
+            border: 1px solid #20242b;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .question {
+            width: 100%;
+            background: #0e1014;
+            border: 0;
+            color: #eee;
+            padding: 18px;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+        }
+
+        .answer {
+            display: none;
+            padding: 0 18px 18px;
+            background: #0e1014;
+            color: #818995;
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .question.open + .answer {
+            display: block;
+        }
+
+        /* ---------- MODAL ---------- */
+
+        .modal-bg {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.7);
+            backdrop-filter: blur(7px);
+            z-index: 50;
+            place-items: center;
+            padding: 20px;
+        }
+
+        .modal-bg.show {
+            display: grid;
+        }
+
+        .modal {
+            width: min(500px, 100%);
+            background: #111419;
+            border: 1px solid #292e36;
+            border-radius: 13px;
+            padding: 25px;
+            animation: pop .2s ease;
+        }
+
+        @keyframes pop {
+            from {
+                opacity: 0;
+                transform: scale(.96);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal h2 {
+            margin-top: 0;
+        }
+
+        .modal p {
+            color: #858d99;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 13px;
+            margin: 8px 0;
+            background: #090b0f;
+            border: 1px solid #292e36;
+            border-radius: 7px;
+            color: white;
+            outline: none;
+        }
+
+        .modal input:focus {
+            border-color: #6c737f;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+        }
+
+        /* ---------- TOAST ---------- */
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            background: #171a20;
+            border: 1px solid #30353e;
+            padding: 13px 17px;
+            border-radius: 8px;
+            font-size: 13px;
+            transform: translateY(80px);
+            opacity: 0;
+            transition: .3s;
+            z-index: 100;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media(max-width: 700px) {
+
+            main {
+                margin-top: 40px;
+            }
+
+            .stats,
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-options {
+                flex-direction: column;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .tabs {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <div class="brand">
+        <div class="brand-icon">R</div>
+        Dev Team
+    </div>
+
+    <div class="online">
+        <span class="online-dot"></span>
+        Recruiting
+    </div>
+</nav>
+
+
+<main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="tag">OPEN POSITION · SCRIPTER</div>
+
+        <h1>We're looking for a Roblox scripter.</h1>
+
+        <p>
+            We're building a Roblox experience and looking for someone
+            who can help us turn gameplay ideas into working systems.
+            You'll be working directly with the development team.
+        </p>
+
+        <div class="hero-actions">
+            <button class="primary" onclick="openApply()">
+                Apply for the role
+            </button>
+
+            <button class="secondary" onclick="copyOffer()">
+                Copy offer
+            </button>
+        </div>
+
+    </section>
+
+
+    <!-- QUICK INFO -->
+
+    <section class="stats">
+
+        <div class="stat">
+            <div class="stat-label">ROLE</div>
+            <div class="stat-value">Roblox Scripter</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">PAYMENT</div>
+            <div class="stat-value">5,000 R$</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-label">CONTRACT</div>
+            <div class="stat-value">6 Months</div>
+        </div>
+
+    </section>
+
+
+    <!-- TABS -->
+
+    <div class="tabs">
+
+        <button class="tab active" onclick="changeTab('role', this)">
+            Role
+        </button>
+
+        <button class="tab" onclick="changeTab('payment', this)">
+            Payment
+        </button>
+
+        <button class="tab" onclick="changeTab('contract', this)">
+            Contract
+        </button>
+
+        <button class="tab" onclick="changeTab('studio', this)">
+            Studio
+        </button>
+
+    </div>
+
+
+    <!-- ROLE -->
+
+    <section id="role" class="panel active">
+
+        <div class="grid">
+
+            <div class="box">
+
+                <h3>What you'll be doing</h3>
+
+                <p>
+                    You'll be responsible for scripting gameplay systems
+                    and helping maintain the game's existing code.
+                </p>
+
+                <div class="role-list">
+
+                    <div class="role">
+                        <span class="check">✓</span>
+                        Create gameplay systems
+                    </div>
+
+                    <div class="role">
+                        <span class="check">✓</span>
+                        Write Roblox Luau scripts
+                    </div>
+
+                    <div class="role">
+                        <span class="check">✓</span>
+                        Fix bugs and improve systems
+                    </div>
+
+                    <div class="role">
+                        <span class="check">✓</span>
+                        Work with builders and other developers
+                    </div>
+
+                    <div class="role">
+                        <span class="check">✓</span>
+                        Help with future updates
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="box">
+
+                <h3>Experience</h3>
+
+                <p>
+                    Roblox scripting experience is preferred.
+                    Knowledge of Luau, RemoteEvents, UI systems
+                    and basic Roblox services is useful.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT -->
+
+    <section id="payment" class="panel">
+
+        <div class="box">
+
+            <h3>Choose payment method</h3>
+
+            <p>
+                The offered compensation is shown below.
+                Select an option to see the details.
+            </p>
+
+            <div class="payment-options">
+
+                <div class="payment-option selected"
+                     onclick="selectPayment(this, 'Robux')">
+
+                    <strong>5,000 R$</strong>
+                    <span>Robux payment</span>
+
+                </div>
+
+                <div class="payment-option"
+                     onclick="selectPayment(this, 'PayPal')">
+
+                    <strong>$5.99</strong>
+                    <span>PayPal · tax excluded</span>
+
+                </div>
+
+            </div>
+
+            <p id="paymentInfo" style="margin-top:18px;">
+                Selected: <strong>5,000 Robux</strong>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTRACT -->
+
+    <section id="contract" class="panel">
+
+        <div class="box">
+
+            <h3>6 month contract</h3>
+
+            <p>
+                The development position is planned around a
+                six-month working period.
+            </p>
+
+            <div class="timeline">
+
+                <div class="month">
+                    <div class="month-dot"></div>
+                    <strong>Month 1</strong>
+                    <p>Onboarding and getting familiar with the project.</p>
+                </div>
+
+                <div class="month">
+                    <div class="month-dot"></div>
+                    <strong>Month 2–3</strong>
+                    <p>Core gameplay scripting and systems.</p>
+                </div>
+
+                <div class="month">
+                    <div class="month-dot"></div>
+                    <strong>Month 4–5</strong>
+                    <p>Features, bug fixes and improvements.</p>
+                </div>
+
+                <div class="month">
+                    <div class="month-dot"></div>
+                    <strong>Month 6</strong>
+                    <p>Polishing, updates and final development work.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STUDIO -->
+
+    <section id="studio" class="panel">
+
+        <div class="box">
+
+            <h3>Roblox Studio</h3>
+
+            <p>
+                Development will take place inside Roblox Studio.
+                You'll work with the team's existing place,
+                scripts and assets.
+            </p>
+
+            <br>
+
+            <div class="accordion">
+
+                <button class="question" onclick="toggleFAQ(this)">
+                    How will I access the project?
+                    <span>+</span>
+                </button>
+
+                <div class="answer">
+                    You'll receive the appropriate Roblox Studio
+                    permissions needed to work on the project.
+                </div>
+
+
+                <button class="question" onclick="toggleFAQ(this)">
+                    Will I work alone?
+                    <span>+</span>
+                </button>
+
+                <div class="answer">
+                    No. You'll be working alongside the rest of the
+                    development team.
+                </div>
+
+
+                <button class="question" onclick="toggleFAQ(this)">
+                    What scripting language?
+                    <span>+</span>
+                </button>
+
+                <div class="answer">
+                    Roblox Luau.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- APPLY MODAL -->
+
+<div class="modal-bg" id="modal">
+
+    <div class="modal">
+
+        <h2>Apply as Scripter</h2>
+
+        <p>
+            Interested in joining? Leave your Roblox username
+            and Discord so the team can contact you.
+        </p>
+
+        <input
+            id="roblox"
+            type="text"
+            placeholder="Roblox username"
+        >
+
+        <input
+            id="discord"
+            type="text"
+            placeholder="Discord username"
+        >
+
+        <div class="modal-buttons">
+
+            <button class="secondary" onclick="closeApply()">
+                Cancel
+            </button>
+
+            <button class="primary" onclick="submitApplication()">
+                Submit
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    Copied to clipboard
+</div>
+
+
+<script>
+
+    /* ---------- TABS ---------- */
+
+    function changeTab(id, button) {
+
+        document.querySelectorAll(".panel")
+            .forEach(panel => panel.classList.remove("active"));
+
+        document.querySelectorAll(".tab")
+            .forEach(tab => tab.classList.remove("active"));
+
+        document.getElementById(id).classList.add("active");
+
+        button.classList.add("active");
+    }
+
+
+    /* ---------- PAYMENT ---------- */
+
+    function selectPayment(element, method) {
+
+        document.querySelectorAll(".payment-option")
+            .forEach(option => option.classList.remove("selected"));
+
+        element.classList.add("selected");
+
+        const info = document.getElementById("paymentInfo");
+
+        if (method === "Robux") {
+
+            info.innerHTML =
+                "Selected: <strong>5,000 Robux</strong>";
+
+        } else {
+
+            info.innerHTML =
+                "Selected: <strong>$5.99 PayPal</strong> · tax excluded";
+        }
+    }
+
+
+    /* ---------- FAQ ---------- */
+
+    function toggleFAQ(button) {
+
+        const isOpen = button.classList.contains("open");
+
+        document.querySelectorAll(".question")
+            .forEach(q => q.classList.remove("open"));
+
+        if (!isOpen) {
+            button.classList.add("open");
+        }
+    }
+
+
+    /* ---------- APPLY ---------- */
+
+    function openApply() {
+
+        document.getElementById("modal")
+            .classList.add("show");
+
+    }
+
+    function closeApply() {
+
+        document.getElementById("modal")
+            .classList.remove("show");
+
+    }
+
+
+    function submitApplication() {
+
+        const roblox =
+            document.getElementById("roblox").value.trim();
+
+        const discord =
+            document.getElementById("discord").value.trim();
+
+        if (!roblox || !discord) {
+
+            showToast("Please fill in both fields.");
+
+            return;
+        }
+
+        closeApply();
+
+        showToast("Application submitted!");
+
+        document.getElementById("roblox").value = "";
+        document.getElementById("discord").value = "";
+    }
+
+
+    /* ---------- COPY ---------- */
+
+    function copyOffer() {
+
+        const text = `
+Roblox Scripter Recruitment
+
+Role: Roblox Scripter
+Payment: 5,000 Robux / $5.99 PayPal (tax excluded)
+Contract: 6 months
+Platform: Roblox Studio
+
+Responsibilities:
+- Create gameplay systems
+- Write Roblox Luau scripts
+- Fix bugs
+- Work with the development team
+- Help with future updates
+        `.trim();
+
+        navigator.clipboard.writeText(text);
+
+        showToast("Offer copied!");
+    }
+
+
+    /* ---------- TOAST ---------- */
+
+    function showToast(message) {
+
+        const toast = document.getElementById("toast");
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 2200);
+    }
+
+
+    /* ---------- MODAL CLICK OUTSIDE ---------- */
+
+    document.getElementById("modal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+                closeApply();
+            }
+
+        });
+
+</script>
+
+</body>
+</html>
